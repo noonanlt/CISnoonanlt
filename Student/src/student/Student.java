@@ -22,7 +22,7 @@ public class Student {
     
     
     public Student(){
-        System.out.println("Please enter the student ID");
+        System.out.println("Please enter the student ID (000)");
         studentId= input.nextLine();
         System.out.println("Please enter the student last name");
         lastName = input.nextLine();
@@ -32,7 +32,17 @@ public class Student {
         dob = input.nextLine();
     }
     
-    public void editStudent(){
+    public void editStudent(Student student){
+        //Complete the functionality to allow a user to edit a student.  
+        //This can be similar to adding a student but will preload the student 
+        //information when they enter a student id.
+        System.out.println(student.toString());
+        System.out.println("Please enter the student last name");
+        lastName = input.nextLine();
+        System.out.println("Please enter the student first name");
+        firstName = input.nextLine();
+        System.out.println("Please enter the student date of birth name (mmddyyyy)");
+        dob = input.nextLine();
         
     }
     
@@ -43,7 +53,7 @@ public class Student {
                 +"\nDate of Birth:\t"+dob;
     }
     public String fileOutputString(){
-        return fixedLength(studentId,3)+","+fixedLength(firstName,15)+","+fixedLength(lastName,15)+","+fixedLength(dob,8);
+        return studentId+","+fixedLength(firstName,15)+","+fixedLength(lastName,15)+","+dob;
     }
     
     public String fixedLength(String s, int length){ //formats a passed string to a specified length

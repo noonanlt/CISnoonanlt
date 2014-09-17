@@ -7,10 +7,7 @@ package student;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.ByteBuffer;
@@ -31,7 +28,8 @@ import static student.Student.*;
 public class FileUtility {
 
     public static void addRecord(String s, String fileName) {
-
+        //this method takes the output string from a new student and writes it
+        //on the corresponding line of the txt file
         Path file = Paths.get(fileName);
         final int REC_SIZE = s.length();
         byte[] data = s.getBytes();
@@ -47,13 +45,6 @@ public class FileUtility {
         } catch (NumberFormatException | IOException e) {
             System.out.println("Error message: " + e);
         }
-    }
-    
-    public static void readRecord(String id) {
-        //takes the student ID entered and *RECORD_LAYOUT.length()
-        //jumps to the correct line in the file
-        //reads RECORD_LAYOUT.length() # of bytes
-        
     }
 
     public static void initializeFile(String fileName) {

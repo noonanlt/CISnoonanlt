@@ -16,8 +16,6 @@ import java.nio.file.Paths;
 import static java.nio.file.StandardOpenOption.*;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,6 +35,7 @@ public class StudentMain {
         Scanner input = new Scanner(System.in);
         
         String menu = "Please select from option below"
+                //added an option to initialize the file
                 + "\nI)Initialize record file"
                 + "\nA)Add a student"
                 + "\nB)View all students"
@@ -58,9 +57,9 @@ public class StudentMain {
                         System.out.println("Record file created.");
                         break;
                     case "A":
+                        //Student constructor is called, new student is added to hashmap and output string is written to file
                         Student student = new Student();
                         students.put(student.getStudentId(), student);
-                        //fileWrite(writer, student.fileOutputString()); old method
                         FileUtility.addRecord(student.fileOutputString(),"c:\\cis2232\\student.txt");
                         break;
                     case "B":
@@ -69,7 +68,10 @@ public class StudentMain {
                         }
                         break;
                     case "C":
-                        System.out.println("Future functionality.");
+                        System.out.println("Enter the id of the student you would like to edit (000):");
+                        Student toEdit = students.get(input.nextLine());
+                        toEdit.editStudent(toEdit);
+                        FileUtility.addRecord(toEdit.fileOutputString(),"c:\\cis2232\\student.txt");
                         break;
                     default:
                         System.err.println("Invalid option");
