@@ -31,7 +31,6 @@ public class FileUtility {
         //this method takes the output string from a new student and writes it
         //on the corresponding line of the txt file
         Path file = Paths.get(fileName);
-        final int REC_SIZE = s.length();
         byte[] data = s.getBytes();
         ByteBuffer buffer = ByteBuffer.wrap(data);
         try {
