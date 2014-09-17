@@ -31,12 +31,13 @@ public class StudentMain {
     private static Path path = Paths.get("c:\\cis2232\\student.txt");
 
     public static void main(String[] args) {
-        FileUtility.initializeFile("c:\\cis2232\\student.txt");
+        
         HashMap<String, Student> students = new HashMap();
         String option;
         Scanner input = new Scanner(System.in);
-
+        
         String menu = "Please select from option below"
+                + "\nI)Initialize record file"
                 + "\nA)Add a student"
                 + "\nB)View all students"
                 + "\nC)Edit a student"
@@ -52,10 +53,14 @@ public class StudentMain {
 
             while (!option.equalsIgnoreCase("x")) {
                 switch (option) {
+                    case "I":
+                        FileUtility.initializeFile("c:\\cis2232\\student.txt");
+                        System.out.println("Record file created.");
+                        break;
                     case "A":
                         Student student = new Student();
                         students.put(student.getStudentId(), student);
-                        //fileWrite(writer, student.fileOutputString());
+                        //fileWrite(writer, student.fileOutputString()); old method
                         FileUtility.addRecord(student.fileOutputString(),"c:\\cis2232\\student.txt");
                         break;
                     case "B":
