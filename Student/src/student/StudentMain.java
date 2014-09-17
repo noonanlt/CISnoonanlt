@@ -69,7 +69,7 @@ public class StudentMain {
                         }
                         break;
                     case "C":
-                        System.out.println("Future functionality");
+                        System.out.println("Future functionality.");
                         break;
                     default:
                         System.err.println("Invalid option");

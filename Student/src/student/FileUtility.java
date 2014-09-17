@@ -7,7 +7,10 @@ package student;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.ByteBuffer;
@@ -38,12 +41,19 @@ public class FileUtility {
             int id = Integer.parseInt(s.substring(0, 3));
             System.out.println(id);
             fc = (FileChannel) Files.newByteChannel(file, WRITE);
-            fc.position(id * RECORD_LAYOUT.length()+1); //Should REC_SIZE be defined? seem to be running into issues here how can we account for variance in record lengths
+            fc.position((id-1) * RECORD_LAYOUT.length());
             fc.write(buffer);
             fc.close();
         } catch (NumberFormatException | IOException e) {
             System.out.println("Error message: " + e);
         }
+    }
+    
+    public static void readRecord(String id) {
+        //takes the student ID entered and *RECORD_LAYOUT.length()
+        //jumps to the correct line in the file
+        //reads RECORD_LAYOUT.length() # of bytes
+        
     }
 
     public static void initializeFile(String fileName) {

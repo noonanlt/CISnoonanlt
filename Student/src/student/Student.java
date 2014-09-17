@@ -16,7 +16,7 @@ public class Student {
     Scanner input = new Scanner(System.in);
     private String studentId;
     private String lastName, firstName, dob;
-    public final static String RECORD_LAYOUT="000,          ,          ,00000000"+
+    public final static String RECORD_LAYOUT="000,               ,               ,00000000"+ //15 spaces each for first and last name
                     System.getProperty("line.separator");
     public final static int NUMBER_OF_RECORDS=100;
     
@@ -28,8 +28,12 @@ public class Student {
         lastName = input.nextLine();
         System.out.println("Please enter the student first name");
         firstName = input.nextLine();
-        System.out.println("Please enter the student date of birth name");
+        System.out.println("Please enter the student date of birth name (mmddyyyy)");
         dob = input.nextLine();
+    }
+    
+    public void editStudent(){
+        
     }
     
     public String toString(){
@@ -39,7 +43,11 @@ public class Student {
                 +"\nDate of Birth:\t"+dob;
     }
     public String fileOutputString(){
-        return studentId+","+firstName+","+lastName+","+dob;
+        return fixedLength(studentId,3)+","+fixedLength(firstName,15)+","+fixedLength(lastName,15)+","+fixedLength(dob,8);
+    }
+    
+    public String fixedLength(String s, int length){ //formats a passed string to a specified length
+        return String.format("%1$"+length+ "s", s);
     }
 
     public Scanner getInput() {
