@@ -34,7 +34,7 @@ public class FileUtility {
         byte[] data = s.getBytes();
         ByteBuffer buffer = ByteBuffer.wrap(data);
         try {
-            FileChannel fc = null;
+            FileChannel fc;
             int id = Integer.parseInt(s.substring(0, 3));
             System.out.println(id);
             fc = (FileChannel) Files.newByteChannel(file, WRITE);
