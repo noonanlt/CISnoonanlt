@@ -71,6 +71,7 @@ public class StudentMain {
                         System.out.println("Enter the id of the student you would like to edit (000):");
                         Student toEdit = students.get(input.nextLine());
                         toEdit.editStudent(toEdit);
+                        students.put(toEdit.getStudentId(),toEdit);
                         FileUtility.addRecord(toEdit.fileOutputString(),"c:\\cis2232\\student.txt");
                         break;
                     default:
